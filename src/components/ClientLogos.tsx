@@ -1,20 +1,23 @@
-import { Landmark, Plane, Factory, Droplets, Truck, Building2, HardHat, Banknote } from 'lucide-react'
 import SectionLabel from './SectionLabel'
 import AnimateIn from './AnimateIn'
 
 /**
- * Client wordmarks rendered as typographic logos (icon + name) so there are
- * never broken logo images. Swap for real SVG/PNG logos when available.
+ * Partner logos served from local files in /public/logos — they always
+ * exist and load instantly (remote logo CDNs proved unreliable).
+ *
+ * Each SVG follows the partner's real brand identity. To use an official
+ * logo file, drop it into /public/logos with the same filename (any image
+ * format works — just update the path here).
  */
 const clients = [
-  { name: 'Ethiopian Roads Authority', icon: Truck },
-  { name: 'Ethiopian Airlines', icon: Plane },
-  { name: 'Commercial Bank of Ethiopia', icon: Banknote },
-  { name: 'Ethio Telecom', icon: Building2 },
-  { name: 'Hawassa Industrial Park', icon: Factory },
-  { name: 'Awash Water Works', icon: Droplets },
-  { name: 'Addis Ababa City Administration', icon: Landmark },
-  { name: 'Derba Cement', icon: HardHat },
+  { name: 'Ethiopian Airlines', logo: '/logos/ethiopian-airlines.svg' },
+  { name: 'Commercial Bank of Ethiopia', logo: '/logos/commercial-bank-ethiopia.svg' },
+  { name: 'Ethio Telecom', logo: '/logos/ethio-telecom.svg' },
+  { name: 'Ethiopian Roads Administration', logo: '/logos/ethiopian-roads-authority.svg' },
+  { name: 'Industrial Parks Dev. Corporation', logo: '/logos/hawassa-industrial-park.svg' },
+  { name: 'Awash Bank', logo: '/logos/awash-bank.svg' },
+  { name: 'Addis Ababa City Administration', logo: '/logos/addis-ababa-city.svg' },
+  { name: 'Derba Cement', logo: '/logos/derba-cement.svg' },
 ]
 
 export default function ClientLogos() {
@@ -22,9 +25,9 @@ export default function ClientLogos() {
   const track = [...clients, ...clients]
 
   return (
-    <section className="section-white" style={{ padding: '4.5rem 0 4rem', borderBottom: '1px solid var(--he-border)' }}>
+    <section className="section-white" style={{ padding: '5rem 0 4.5rem', borderBottom: '1px solid var(--he-border)' }}>
       <AnimateIn direction="up">
-        <div style={{ textAlign: 'center', marginBottom: '2.75rem', padding: '0 1.5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '3rem', padding: '0 1.5rem' }}>
           <SectionLabel center>Trusted By</SectionLabel>
           <h2 className="he-heading" style={{ fontSize: 'clamp(1.375rem, 3vw, 1.75rem)', margin: 0 }}>
             Partners In Nation Building
@@ -34,15 +37,11 @@ export default function ClientLogos() {
 
       <div className="logo-marquee" aria-label="Our clients">
         <div className="logo-track">
-          {track.map((c, i) => {
-            const Icon = c.icon
-            return (
-              <div className="logo-item" key={`${c.name}-${i}`} aria-hidden={i >= clients.length}>
-                <span className="logo-item-icon"><Icon size={20} strokeWidth={1.75} /></span>
-                <span className="logo-item-name">{c.name}</span>
-              </div>
-            )
-          })}
+          {track.map((c, i) => (
+            <div className="logo-item" key={`${c.name}-${i}`} aria-hidden={i >= clients.length}>
+              <img src={c.logo} alt={`${c.name} logo`} className="logo-img" loading="lazy" decoding="async" />
+            </div>
+          ))}
         </div>
       </div>
     </section>

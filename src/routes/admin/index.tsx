@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Trash2, Package, Lock, CheckCircle, ToggleLeft, ToggleRight, X } from 'lucide-react'
-import { CATEGORY_LABELS, formatDate } from '../../lib/utils'
+import { CATEGORY_LABELS, CATEGORY_IMAGES, getItemImage, formatDate } from '../../lib/utils'
 import { getInventory, createInventoryItem, deleteInventoryItem, toggleAvailability } from '../../lib/inventory'
 import Select from '../../components/Select'
 import SmartImage from '../../components/SmartImage'
@@ -253,9 +253,7 @@ function AdminPage() {
                   transition={{ duration: 0.35, ease: [0.16,1,0.3,1] }}
                   style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '0.75rem', padding: '1.125rem 1.5rem', display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}
                 >
-                  {item.imageUrl && (
-                    <SmartImage src={item.imageUrl} alt={item.name} loading="lazy" style={{ width: '56px', height: '48px', objectFit: 'cover', borderRadius: '0.375rem', flexShrink: 0, border: '1px solid #e2e8f0' }} />
-                  )}
+                  <SmartImage src={getItemImage(item)} fallback={CATEGORY_IMAGES[item.category] ?? CATEGORY_IMAGES.OTHER} alt={item.name} loading="lazy" style={{ width: '56px', height: '48px', objectFit: 'cover', borderRadius: '0.375rem', flexShrink: 0, border: '1px solid #e2e8f0' }} />
                   <div style={{ flex: 1, minWidth: '180px' }}>
                     <div style={{ color: '#0f172a', fontWeight: 700, fontSize: '0.9375rem', marginBottom: '0.2rem' }}>{item.name}</div>
                     <div style={{ color: '#94a3b8', fontSize: '0.8125rem' }}>

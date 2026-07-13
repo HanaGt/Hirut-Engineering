@@ -7,9 +7,13 @@ interface PageHeaderProps {
   description?: string
 }
 
+/**
+ * Light tinted page hero — visibly distinct from the white content below
+ * without going dark.
+ */
 export default function PageHeader({ label, title, description }: PageHeaderProps) {
   return (
-    <section className="page-header">
+    <section className="page-header page-header--tinted">
       <AnimateIn>
         <SectionLabel center>{label}</SectionLabel>
         <h1

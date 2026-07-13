@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, SlidersHorizontal, Package, Calendar, MessageSquare, ArrowRight, RotateCcw } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { CATEGORY_LABELS, formatDate } from '../../lib/utils'
+import { CATEGORY_LABELS, CATEGORY_IMAGES, getItemImage, formatDate } from '../../lib/utils'
 import { getInventory } from '../../lib/inventory'
 import PageHeader from '../../components/PageHeader'
 import Select from '../../components/Select'
@@ -128,11 +128,17 @@ function InventoryCard({ item }: { item: InventoryItem }) {
       transition={{ duration: 0.22 }}
     >
       <Link to="/inventory/$itemId" params={{ itemId: item.id }} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        {item.imageUrl && (
-          <div style={{ aspectRatio: '16 / 10', borderRadius: 'var(--he-radius-sm)', overflow: 'hidden', background: 'var(--he-surface-cool)' }}>
-            <SmartImage src={item.imageUrl} alt={item.name} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          </div>
-        )}
+        {/* Custom image when provided, otherwise the category's predefined image */}
+        <div style={{ aspectRatio: '16 / 10', borderRadius: 'var(--he-radius-sm)', overflow: 'hidden', background: 'var(--he-surface-cool)' }}>
+          <SmartImage
+            src={getItemImage(item)}
+            fallback={CATEGORY_IMAGES[item.category] ?? CATEGORY_IMAGES.OTHER}
+            alt={item.name}
+            loading="lazy"
+            decoding="async"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </div>
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.75rem' }}>
           <span className="category-badge">{CATEGORY_LABELS[item.category] ?? item.category}</span>

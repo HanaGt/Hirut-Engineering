@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="110" viewBox="0 0 380 110" role="img" aria-label="Ethiopian Roads Administration">
+  <path d="M52 10 L 92 24 V 62 C 92 84, 74 96, 52 102 C 30 96, 12 84, 12 62 V 24 Z" fill="#1a7a3c"/>
+  <path d="M38 96 L 48 26 H 58 L 68 96 C 63 98, 57 100, 52 101 C 47 100, 42 98, 38 96 Z" fill="#e9ecef"/>
+  <g stroke="#f59f00" stroke-width="4" stroke-dasharray="8 8"><line x1="53" y1="30" x2="53" y2="97"/></g>
+  <text x="106" y="46" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="800" fill="#14203a" letter-spacing="-0.3">Ethiopian Roads</text>
+  <text x="106" y="72" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="800" fill="#1a7a3c" letter-spacing="-0.3">Administration</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="110" viewBox="0 0 400 110" role="img" aria-label="Addis Ababa City Administration">
+  <circle cx="52" cy="55" r="42" fill="#0c1222"/>
+  <g fill="#e8b34b">
+    <rect x="26" y="52" width="9" height="26"/>
+    <rect x="38" y="42" width="9" height="36"/>
+    <rect x="50" y="32" width="9" height="46"/>
+    <rect x="62" y="46" width="9" height="32"/>
+    <circle cx="54" cy="24" r="4"/>
+  </g>
+  <rect x="22" y="80" width="60" height="4" rx="2" fill="#b45309"/>
+  <text x="108" y="46" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800" fill="#14203a" letter-spacing="-0.4">Addis Ababa</text>
+  <text x="108" y="72" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" fill="#b45309" letter-spacing="0.6">City Administration</text>
+</svg>

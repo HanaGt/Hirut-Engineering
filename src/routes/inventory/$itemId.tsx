@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Package, Calendar, MessageSquare, Tag, CheckCircle, XCircle } from 'lucide-react'
-import { CATEGORY_LABELS, formatDate } from '../../lib/utils'
+import { CATEGORY_LABELS, CATEGORY_IMAGES, getItemImage, formatDate } from '../../lib/utils'
 import { getInventoryItem } from '../../lib/inventory'
 import AnimateIn from '../../components/AnimateIn'
 import SmartImage from '../../components/SmartImage'
@@ -51,17 +51,14 @@ function ItemDetailPage() {
 
         <div className="detail-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 3fr) minmax(0, 2fr)', gap: '4rem', alignItems: 'start' }}>
           <AnimateIn direction="up" delay={0.05}>
-            <div style={{ borderRadius: 'var(--he-radius-xl)', overflow: 'hidden', aspectRatio: '4 / 3', background: 'var(--he-surface-cool)', border: '1px solid var(--he-border)', boxShadow: 'var(--he-shadow-md)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              {item.imageUrl ? (
-                <SmartImage
-                  src={item.imageUrl}
-                  alt={item.name}
-                  decoding="async"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', filter: item.available ? 'none' : 'grayscale(0.85)' }}
-                />
-              ) : (
-                <Package size={72} style={{ color: 'var(--he-border-strong)' }} />
-              )}
+            <div style={{ borderRadius: 'var(--he-radius-xl)', overflow: 'hidden', aspectRatio: '4 / 3', background: 'var(--he-surface-cool)', border: '1px solid var(--he-border)', boxShadow: 'var(--he-shadow-md)' }}>
+              <SmartImage
+                src={getItemImage(item)}
+                fallback={CATEGORY_IMAGES[item.category] ?? CATEGORY_IMAGES.OTHER}
+                alt={item.name}
+                decoding="async"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', filter: item.available ? 'none' : 'grayscale(0.85)' }}
+              />
             </div>
           </AnimateIn>
 

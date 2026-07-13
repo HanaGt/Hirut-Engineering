@@ -154,30 +154,29 @@ function HeroSection() {
           </span>
         </motion.div>
 
+        {/* No overflow-hidden wrappers here: they clipped the "g" descenders.
+            Each line fades and rises instead, so glyphs always render whole. */}
         <h1 style={{ margin: '0 0 1.75rem' }}>
           {[
             { text: 'Engineering', color: '#ffffff' },
             { text: "Ethiopia's Future", color: 'var(--he-amber-light)' },
           ].map((line, i) => (
-            /* paddingBottom + negative marginBottom give descenders ("g", "y")
-               room inside the overflow-hidden reveal without adding line gap */
-            <span key={i} style={{ display: 'block', overflow: 'hidden', paddingBottom: '0.16em', marginBottom: '-0.16em' }}>
-              <motion.span
-                initial={{ y: '110%' }}
-                animate={{ y: '0%' }}
-                transition={{ duration: 0.9, delay: 0.12 + i * 0.13, ease: [0.16, 1, 0.3, 1] }}
-                style={{
-                  display: 'block',
-                  fontSize: 'clamp(2.75rem, 7vw, 4.5rem)', /* 72px max */
-                  fontWeight: 800,
-                  letterSpacing: '-0.04em',
-                  color: line.color,
-                  lineHeight: 1.08,
-                }}
-              >
-                {line.text}
-              </motion.span>
-            </span>
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 38 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.12 + i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                display: 'block',
+                fontSize: 'clamp(2.75rem, 7vw, 4.5rem)', /* 72px max */
+                fontWeight: 800,
+                letterSpacing: '-0.04em',
+                color: line.color,
+                lineHeight: 1.14, /* room for ascenders + descenders between lines */
+              }}
+            >
+              {line.text}
+            </motion.span>
           ))}
         </h1>
 

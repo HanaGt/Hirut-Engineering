@@ -464,6 +464,18 @@ textarea:focus-visible,
 }
 .page-header > * { position: relative; z-index: 1; }
 
+/* Tinted variant — clearly distinct from the white content below,
+   but still light and airy (not dark) */
+.page-header--tinted {
+  background: linear-gradient(180deg, #eef2f9 0%, #e5ebf5 100%);
+  border-bottom: 1px solid var(--he-border-strong);
+}
+.page-header--tinted::before {
+  background:
+    radial-gradient(ellipse 60% 85% at 18% 0%, rgba(232, 135, 10, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 65% at 85% 100%, rgba(12, 18, 34, 0.06) 0%, transparent 60%);
+}
+
 /* ---- SECTIONS ---- */
 .section-warm { background: var(--he-surface-warm); }
 .section-cool { background: var(--he-surface-cool); }
@@ -552,35 +564,23 @@ textarea:focus-visible,
 .logo-item {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  color: var(--he-text-muted);
-  opacity: 0.65;
   white-space: nowrap;
-  transition: opacity 250ms ease, color 250ms ease, transform 250ms var(--he-ease);
+  transition: transform 250ms var(--he-ease);
   cursor: default;
 }
-.logo-item:hover {
-  opacity: 1;
-  color: var(--he-navy);
-  transform: translateY(-2px);
+.logo-item:hover { transform: translateY(-4px) scale(1.05); }
+.logo-img {
+  height: 6rem; /* large, eye-catching logo size */
+  width: auto;
+  object-fit: contain;
+  display: block;
+  opacity: 0.95;
+  transition: opacity 300ms ease;
 }
-.logo-item:hover .logo-item-icon { color: var(--he-amber-dark); border-color: rgba(232, 135, 10, 0.35); }
-.logo-item-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.375rem;
-  height: 2.375rem;
-  border-radius: 0.625rem;
-  border: 1.5px solid var(--he-border);
-  color: inherit;
-  transition: color 250ms ease, border-color 250ms ease;
-  flex-shrink: 0;
-}
-.logo-item-name {
-  font-weight: 700;
-  font-size: 0.9375rem;
-  letter-spacing: -0.01em;
+.logo-item:hover .logo-img { opacity: 1; }
+@media (max-width: 768px) {
+  .logo-img { height: 4.5rem; }
+  .logo-track { gap: 3rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .logo-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }

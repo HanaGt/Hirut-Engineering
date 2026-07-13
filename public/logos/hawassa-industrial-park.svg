@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="110" viewBox="0 0 380 110" role="img" aria-label="Industrial Parks Development Corporation">
+  <g>
+    <rect x="12" y="52" width="20" height="40" rx="3" fill="#1971c2"/>
+    <rect x="36" y="38" width="20" height="54" rx="3" fill="#1c7ed6"/>
+    <rect x="60" y="24" width="20" height="68" rx="3" fill="#339af0"/>
+    <path d="M12 52 L 32 38 V 52 Z" fill="#f59f00"/>
+    <path d="M36 38 L 56 24 V 38 Z" fill="#f59f00"/>
+    <rect x="17" y="60" width="10" height="8" fill="#e7f5ff"/>
+    <rect x="41" y="48" width="10" height="8" fill="#e7f5ff"/>
+    <rect x="65" y="34" width="10" height="8" fill="#e7f5ff"/>
+  </g>
+  <text x="94" y="46" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="800" fill="#14203a" letter-spacing="-0.3">Industrial Parks</text>
+  <text x="94" y="72" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="800" fill="#1971c2" letter-spacing="-0.3">Dev. Corporation</text>
+</svg>
