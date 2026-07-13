@@ -1,0 +1,33 @@
+generator client {
+  provider        = "prisma-client"
+  output          = "../src/generated/prisma"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model ImportedItem {
+  id          String   @id @default(cuid())
+  name        String
+  category    Category
+  arrivalDate DateTime
+  specs       String
+  imageUrl    String?
+  quantity    Int      @default(1)
+  unit        String   @default("unit")
+  available   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum Category {
+  HEAVY_MACHINERY
+  STRUCTURAL_STEEL
+  ELECTRICAL
+  PLUMBING
+  FINISHING_MATERIALS
+  SAFETY_EQUIPMENT
+  OTHER
+}
